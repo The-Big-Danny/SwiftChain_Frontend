@@ -1,6 +1,5 @@
 import './global.css';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
-import { Providers } from './providers';
+import CommandPalette from '@/components/ui/CommandPalette';
 
 export const metadata = {
   title: 'SwiftChain',
@@ -13,14 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body>
-        <Providers>
-          <div className="fixed right-4 top-4 z-50">
-            <ThemeToggle />
-          </div>
-          {children}
-        </Providers>
+        <CommandPalette />
+        {children}
       </body>
     </html>
   );
