@@ -1,10 +1,33 @@
+import { FaqHelpCenter } from '@/components/support/FaqHelpCenter';
+
+export const metadata = {
+  title: 'FAQ & Help Center | SwiftChain',
+  description: 'Find answers to common questions about SwiftChain deliveries, payments, and tracking.',
+};
+
 export default function FaqPage() {
   return (
-    <main className="min-h-screen px-6 py-10">
-      <h1 className="text-3xl font-semibold">FAQ</h1>
-      <p className="mt-3 max-w-2xl text-slate-600">
-        Find answers to common questions about SwiftChain delivery tracking and platform usage.
+    <main style={{ maxWidth: '720px', margin: '0 auto', padding: '2rem 1rem' }}>
+      <h1
+        style={{
+          fontSize: '1.875rem',
+          fontWeight: 800,
+          color: '#111827',
+          marginBottom: '0.5rem',
+        }}
+      >
+        FAQ & Help Center
+      </h1>
+      <p
+        style={{
+          color: '#6b7280',
+          marginBottom: '2rem',
+          fontSize: '1rem',
+        }}
+      >
+        Find answers to common questions about SwiftChain.
       </p>
+      <FaqHelpCenter />
     </main>
   );
 }
