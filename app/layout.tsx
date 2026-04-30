@@ -1,6 +1,13 @@
 import './global.css';
+import OfflineBanner from '@/components/wallet/ui/OfflineBanner';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Providers } from './providers';
+import { NotificationProvider } from '@/context/NotificationContext';
+import { NotificationCenter } from '@/components/layout/NotificationCenter';
+import TopLoader from '@/components/ui/TopLoader';
+import CommandPalette from '@/components/ui/CommandPalette';
+import ToastProvider from '@/components/providers/ToastProvider';
+import ModalProvider from '@/components/providers/ModalProvider';
 
 export const metadata = {
   title: 'SwiftChain',
@@ -15,12 +22,32 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Providers>
-          <div className="fixed right-4 top-4 z-50">
-            <ThemeToggle />
-          </div>
-          {children}
-        </Providers>
+        <ModalProvider>
+          <Providers>
+            <NotificationProvider>
+              <ToastProvider>
+                <OfflineBanner />
+                <div
+                  style={{
+                    position: 'fixed',
+                    right: '1rem',
+                    top: '1rem',
+                    zIndex: 50,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                  }}
+                >
+                  <NotificationCenter />
+                  <ThemeToggle />
+                </div>
+                <TopLoader />
+                <CommandPalette />
+                {children}
+              </ToastProvider>
+            </NotificationProvider>
+          </Providers>
+        </ModalProvider>
       </body>
     </html>
   );
